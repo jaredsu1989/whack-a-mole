@@ -1,8 +1,8 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     let time = Number(document.getElementById('time').textContent);
     let score = Number(document.getElementById('score').textContent);
     let square = document.querySelectorAll('.square');
-    let moleGridId = [1,2,3,4,5,6,7,8,9];
+    let moleGridId = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     let button = document.getElementById('restart');
     let moleSound = document.getElementById('moleSound');
     let emptyHit = document.getElementById('emptyHit');
@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function a() {
         let timer = setInterval(countDown, 1000);
-        let moleMovement = setInterval(movingMole, 525);
+        let moleMovement = setInterval(movingMole, 1000);
 
         //set start-game condition
         score = 0;
@@ -19,7 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
         //movingMole
         function movingMole() {
-            moleGridId.sort((a, b) => 0.5 - Math.random());
+            let advRandomGenerator = () => {
+                let i, j, k;
+                for (i = moleGridId.length - 1; i > 0; i--) {
+                    j = Math.floor(Math.random() * i);
+                    k = moleGridId[i];
+                    moleGridId[i] = moleGridId[j];
+                    moleGridId[j] = k;
+                }
+            };
+            //moleGridId.sort((a, b) => 0.5 - Math.random());
+            advRandomGenerator();
+            //moleGridId.sort((a, b) => 0.5 - Math.random());
             square.forEach((ele, index) => {
                 ele.setAttribute('squareId', moleGridId[index]);
                 if (ele.getAttribute('squareId') == 5) {
@@ -29,33 +40,33 @@ document.addEventListener('DOMContentLoaded', function() {
                     ele.classList.remove('mole');
                     noChange(ele);
                     ele.onclick = emptyHit.play();
-                    
+
                 }
 
             });
-        }    
-    
+        }
+
         //score change function
         function scoreChange() {
-            score+=1;
+            score += 1;
             document.getElementById('score').innerText = score;
-            moleSound.play();    
+            moleSound.play();
         }
-        
+
         function noChange(ele) {
             ele.onclick = "";
-            score+=0;
+            score += 0;
             document.getElementById('score').innerText = score;
 
         }
-    
+
         //coundown function
         function countDown() {
             if (time == 0) {
                 time = 60;
                 //score = 0;
                 document.getElementById('score').innerText = score;
-                document.getElementById('time').innerText = time;    
+                document.getElementById('time').innerText = time;
                 clearInterval(timer);
                 clearInterval(moleMovement);
                 square.forEach((ele, index) => {
@@ -66,8 +77,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             } else {
                 button.disabled = true;
-                time-=1;
-                document.getElementById('time').innerText = time;        
+                time -= 1;
+                document.getElementById('time').innerText = time;
             }
         }
     }
