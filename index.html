@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">   
+        <title>Whack a mole - by Jared Su</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <h1>WHACK-A-MOLE</h1>
+        <h2>By Jared Su</h2>
+        <h3>Objective: score as much as possible within the time-limit by clicking the mole.</h3>
+        <div id="scoreboard">
+            <h3>Score: <span id="score">0</span></h3>
+            <h3>Time remaining: <span id="time">60</span></h2>
+        </div>
+
+        <div id="grid">
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+            <div class="square"></div>
+        </div>
+
+        <button id="restart">Start Game</button>
+        <audio id="emptyHit"><source src="emptyHit.wav"></audio>
+        <audio id="moleSound"><source src="moleSound.wav"></audio>
+
+    </body>    
+</html>

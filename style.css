@@ -1,0 +1,38 @@
+* {
+    text-align: center;
+    margin: auto;
+    padding: 0;
+}
+#grid {
+    display: flex;
+    flex-flow: row wrap;
+    height: 620px;
+    width: 620px;
+    align-content: center;
+    align-items: center;
+    
+}
+
+#grid > div {
+    margin: 0px;
+}
+
+.square {
+    height: 180px;
+    width: 180px;
+    border-style: solid;
+    background-size: cover;
+}
+
+#scoreboard {
+    margin: auto;
+    width: 50%;
+}
+
+
+.mole {
+    height: 180px;
+    width: 180px;
+    background-image: url("mole.jpg");
+    background-size: cover;
+}
